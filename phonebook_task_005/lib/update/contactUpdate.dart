@@ -327,7 +327,7 @@ class _UpdateContactState extends State<UpdateContact> {
                             color: Colors.black,
                             fontWeight: FontWeight.bold,
                           )),
-                      content: const Text("Confirm changes?"),
+                      content: const Text("Tap on Confirm to Save Changes"),
                       actions: <Widget>[
                         TextButton(
                             onPressed: () {
@@ -356,7 +356,7 @@ class _UpdateContactState extends State<UpdateContact> {
                 );
               },
               icon: Icon(Icons.save),
-              label: Text("Save Changes"),
+              label: Text("Save"),
               foregroundColor: Colors.white,
               backgroundColor: Colors.black,
             ),
@@ -392,7 +392,7 @@ class _UpdateContactState extends State<UpdateContact> {
                 fnameFocus.hasFocus ? Colors.black : Colors.grey;
               });
             },
-            maxLength: 13,
+            //maxLength: 13,
             keyboardType: TextInputType.phone,
             textInputAction: TextInputAction.done,
             decoration: new InputDecoration(

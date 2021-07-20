@@ -61,7 +61,9 @@ class CreateConfirmed extends StatelessWidget {
                               fontSize: 24,
                               fontWeight: FontWeight.bold),
                           textAlign: TextAlign.center),
-                      Text('${todo[index].firstName}',
+                      Text(
+                          '${todo[index].firstName}' +
+                              '${todo[index].lastName}',
                           style: TextStyle(color: Colors.black, fontSize: 24),
                           textAlign: TextAlign.center),
                     ],
@@ -106,7 +108,6 @@ class CreateConfirmed extends StatelessWidget {
                               Text(
                                 'Phone #' +
                                     listNumbers[index].toString() +
-                                    ':\t\t' +
                                     todo[0].phoneNumbers[index].toString(),
                                 style: TextStyle(
                                   color: Colors.black,

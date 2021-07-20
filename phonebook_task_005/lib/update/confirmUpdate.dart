@@ -42,9 +42,6 @@ class UpdateScreen extends StatelessWidget {
     return WillPopScope(
       onWillPop: () async => false,
       child: Scaffold(
-        appBar: AppBar(
-          title: Center(child: Text('Contact Summary')),
-        ),
         body: ListView.builder(
           itemCount: todo.length,
           itemBuilder: (context, index) {
@@ -64,30 +61,10 @@ class UpdateScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('First Name: ',
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.center),
-                      Text('${todo[index].firstName}',
-                          style: TextStyle(color: Colors.black, fontSize: 24),
-                          textAlign: TextAlign.center),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text('Last Name: ',
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.center),
-                      Text('${todo[index].lastName}',
+                      Text(
+                          '${todo[index].firstName}' +
+                              " " +
+                              '${todo[index].lastName}',
                           style: TextStyle(color: Colors.black, fontSize: 24),
                           textAlign: TextAlign.center),
                     ],
@@ -113,9 +90,8 @@ class UpdateScreen extends StatelessWidget {
                                 height: 10,
                               ),
                               Text(
-                                'Phone #' +
+                                'Phone #: ' +
                                     listNumbers[index].toString() +
-                                    ':\t\t' +
                                     todo[0].phoneNumbers[index].toString(),
                                 style: TextStyle(
                                   color: Colors.black,

@@ -229,7 +229,6 @@ class _CreateNewContactState extends State<CreateNewContact> {
                 fnameFocus.hasFocus ? Colors.black : Colors.grey;
               });
             },
-            maxLength: 13,
             keyboardType: TextInputType.phone,
             textInputAction: TextInputAction.done,
             decoration: new InputDecoration(

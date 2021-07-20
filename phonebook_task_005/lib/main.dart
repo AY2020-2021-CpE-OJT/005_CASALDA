@@ -12,7 +12,6 @@ class MyApp extends StatelessWidget {
       title: 'Phonebook Application',
       theme: ThemeData(
         primaryColor: Colors.white,
-        //accentColor: Colors.deepOrangeAccent,
         textTheme: TextTheme(
           headline1: TextStyle(
             fontSize: 45.0,

@@ -275,10 +275,9 @@ class _HomePageState extends State<HomePage> {
                                                                     //       10,
                                                                     // ),
                                                                     Text(
-                                                                      'Phone #' +
+                                                                      'Phone #: ' +
                                                                           listNumbers[iter]
                                                                               .toString() +
-                                                                          ':\t\t' +
                                                                           _users[index]['phone_numbers'][iter]
                                                                               .toString(),
                                                                       style: TextStyle(

@@ -113,16 +113,15 @@ class _HomePageState extends State<HomePage> {
                               child: Row(
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   children: <Widget>[
-                                    Icon(Icons.delete_forever,
-                                        color: Colors.black),
+                                    Icon(Icons.delete, color: Colors.black),
                                     Text("Delete",
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 16.0,
-                                            color: Colors.white70))
+                                            color: Colors.black87))
                                   ]),
                               decoration: BoxDecoration(
-                                color: Colors.redAccent,
+                                color: Colors.red.shade50,
                                 borderRadius: BorderRadius.circular(15),
                               ),
                             ),
@@ -137,7 +136,10 @@ class _HomePageState extends State<HomePage> {
                               });
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
-                                  content: Text('$userDeleted deleted'),
+                                  content: Text(
+                                    '$userDeleted erased from contacts',
+                                    textAlign: TextAlign.center,
+                                  ),
                                 ),
                               );
                             },
@@ -150,8 +152,8 @@ class _HomePageState extends State<HomePage> {
                                         style: TextStyle(
                                           color: Colors.redAccent,
                                         )),
-                                    content: const Text(
-                                        "Are you sure you wish to delete this contact?"),
+                                    content:
+                                        const Text("Contact will be deleted"),
                                     actions: <Widget>[
                                       TextButton(
                                           onPressed: () =>
@@ -173,27 +175,13 @@ class _HomePageState extends State<HomePage> {
                             },
                             child: Container(
                               child: Card(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(15.0),
-                                ),
-                                color: index % 2 == 0
-                                    ? Colors.black
-                                    : Colors.white,
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     ListTile(
                                       tileColor: Colors.transparent,
                                       selectedTileColor: Colors.transparent,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(15.0),
-                                      ),
                                       leading: CircleAvatar(
-                                        backgroundColor: index % 2 == 0
-                                            ? Colors.white
-                                            : Colors.black,
-                                        radius: 30.0,
                                         child: Text(
                                             _users[index]['first_name'][0] +
                                                 _users[index]['last_name'][0],
@@ -201,7 +189,7 @@ class _HomePageState extends State<HomePage> {
                                                 fontSize: 20,
                                                 color: index % 2 == 0
                                                     ? Colors.black
-                                                    : Colors.white,
+                                                    : Colors.black,
                                                 fontWeight: FontWeight.bold)),
                                       ),
                                       title: Text(
@@ -209,7 +197,7 @@ class _HomePageState extends State<HomePage> {
                                         style: TextStyle(
                                           fontSize: 18,
                                           color: index % 2 == 0
-                                              ? Colors.white
+                                              ? Colors.black
                                               : Colors.black,
                                           fontWeight: FontWeight.bold,
                                         ),
@@ -217,7 +205,7 @@ class _HomePageState extends State<HomePage> {
                                       subtitle: Text(_phonenum(_users[index]),
                                           style: TextStyle(
                                             color: index % 2 == 0
-                                                ? Colors.white
+                                                ? Colors.black
                                                 : Colors.black,
                                           )),
                                       onTap: () {
@@ -279,6 +267,9 @@ class _HomePageState extends State<HomePage> {
                                                               },
                                                               child: const Text(
                                                                 'EDIT',
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .start,
                                                                 style:
                                                                     TextStyle(
                                                                   color: Colors
@@ -318,8 +309,8 @@ class _HomePageState extends State<HomePage> {
                                                                           _users[index]['phone_numbers'][iter]
                                                                               .toString(),
                                                                       style: TextStyle(
-                                                                          color: Color(
-                                                                              0xFF5B3415),
+                                                                          color: Colors
+                                                                              .black,
                                                                           fontSize:
                                                                               14),
                                                                     ),
@@ -381,6 +372,7 @@ class _HomePageState extends State<HomePage> {
             onPressed: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => CreateNewContact()));
+              Align(alignment: Alignment.bottomCenter);
             },
             child: Icon(
               Icons.add,

@@ -176,12 +176,6 @@ class _UpdateContactState extends State<UpdateContact> {
       context: context,
       builder: (BuildContext context) {
         return new AlertDialog(
-          title: const Text("Are you sure?",
-              style: TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-              )),
-          content: const Text("Changes will not be saved"),
           actions: <Widget>[
             TextButton(
                 onPressed: () {
@@ -217,11 +211,6 @@ class _UpdateContactState extends State<UpdateContact> {
       child: SizedBox(
         child: Column(
           children: [
-            Text("Name: " + contentFname + " " + contentLname,
-                style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 25)),
             SizedBox(
               height: 20,
             ),
@@ -314,8 +303,8 @@ class _UpdateContactState extends State<UpdateContact> {
               ),
             ),
             SizedBox(height: 20),
-            Text("Contact Number/s: $listNumber",
-                style: TextStyle(color: Colors.black)),
+            // Text("Contact Number/s: $listNumber",
+            //     style: TextStyle(color: Colors.black)),
             SizedBox(height: 20),
             Flexible(
               child: ListView.builder(

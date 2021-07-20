@@ -374,11 +374,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
       context: context,
       builder: (BuildContext context) {
         return new AlertDialog(
-          title: const Text("Are you sure?",
-              style: TextStyle(
-                color: Colors.black,
-              )),
-          content: const Text("Account creation will be stopped"),
           actions: <Widget>[
             TextButton(
               onPressed: () {

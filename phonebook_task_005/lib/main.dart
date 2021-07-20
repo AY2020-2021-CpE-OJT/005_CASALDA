@@ -8,13 +8,8 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    AppBar(
-      centerTitle: true,
-      title:
-          Text("Phonebook Application", style: TextStyle(color: Colors.black)),
-    );
     return MaterialApp(
-      //title: 'Phonebook Application',
+      title: 'Phonebook Application',
       theme: ThemeData(
         primaryColor: Colors.white,
         //accentColor: Colors.deepOrangeAccent,

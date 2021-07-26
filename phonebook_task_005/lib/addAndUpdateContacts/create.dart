@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'confirm.dart';
+//import 'confirm.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
+//import 'create.dart';
 
 class ContactData {
   final String lastName;
@@ -329,4 +333,72 @@ _fieldFocusChange(
     BuildContext context, FocusNode currentFocus, FocusNode nextFocus) {
   currentFocus.unfocus();
   FocusScope.of(context).requestFocus(nextFocus);
+}
+
+class CreateConfirmed extends StatelessWidget {
+  final List<ContactData> todo;
+
+  const CreateConfirmed({Key? key, required this.todo}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    Future<http.Response> createContact(
+        String fname, String lname, List pnums) async {
+      final SharedPreferences sharedPreferences =
+          await SharedPreferences.getInstance();
+      var authKeyObtained = sharedPreferences.getString('authKey');
+      return http.post(
+        Uri.parse('https://kc-api-005.herokuapp.com/api/posts/new'),
+        headers: <String, String>{
+          'Content-Type': 'application/json ;charset=UTF-8',
+          'Accept': 'application/json',
+          'auth-token': authKeyObtained.toString(),
+        },
+        body: jsonEncode({
+          'phone_numbers': pnums,
+          'first_name': fname,
+          'last_name': lname,
+        }),
+      );
+    }
+
+    List<int> listNumbers = [];
+    for (int i = 0; i < todo[0].phoneNumbers.length; i++) {
+      listNumbers.add(i + 1);
+    }
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        body: ListView.builder(
+          itemCount: todo.length,
+          itemBuilder: (context, index) {
+            createContact(todo[index].firstName, todo[index].lastName,
+                todo[index].phoneNumbers);
+            return Container(
+              child: Column(
+                children: <Widget>[
+                  SizedBox(
+                    height: 40,
+                  ),
+                  Text('Contact Created',
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold),
+                      textAlign: TextAlign.center),
+                ],
+              ),
+            );
+          },
+        ),
+        floatingActionButton: FloatingActionButton.extended(
+            onPressed: () {
+              Navigator.pushNamedAndRemoveUntil(context, '/home', (_) => false);
+            },
+            label: Text("Done"),
+            foregroundColor: Colors.white,
+            backgroundColor: Colors.black),
+      ),
+    );
+  }
 }

@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:phonebook_task_005/update/confirmUpdate.dart';
+//import 'package:phonebook_task_005/update/contactUpdate.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ContactDataUpdate {
@@ -24,12 +24,11 @@ Future<SpecificContact> fetchSpecificContact(String id) async {
         'Accept': 'application/json',
         'auth-token': authKeyObtained.toString(),
       });
-  print('Status [Success]: Got the ID [$id]');
+  print('ID: [$id]');
   if (response.statusCode == 200) {
-    print('Status [Success]: Specific Data Appended');
     return SpecificContact.fromJson(json.decode(response.body));
   } else {
-    throw Exception('Status [Failed]: Cannot load Contact');
+    throw Exception('Contacts not loaded.');
   }
 }
 
@@ -302,10 +301,7 @@ class _UpdateContactState extends State<UpdateContact> {
                 ),
               ),
             ),
-            SizedBox(height: 20),
-            // Text("Contact Number/s: $listNumber",
-            //     style: TextStyle(color: Colors.black)),
-            SizedBox(height: 20),
+            SizedBox(height: 40),
             Flexible(
               child: ListView.builder(
                   reverse: true,
@@ -392,7 +388,6 @@ class _UpdateContactState extends State<UpdateContact> {
                 fnameFocus.hasFocus ? Colors.black : Colors.grey;
               });
             },
-            //maxLength: 13,
             keyboardType: TextInputType.phone,
             textInputAction: TextInputAction.done,
             decoration: new InputDecoration(
@@ -492,4 +487,76 @@ _fieldFocusChange(
     BuildContext context, FocusNode currentFocus, FocusNode nextFocus) {
   currentFocus.unfocus();
   FocusScope.of(context).requestFocus(nextFocus);
+}
+
+class UpdateScreen extends StatelessWidget {
+  final List<ContactDataUpdate> todo;
+  final String specificID;
+
+  const UpdateScreen({Key? key, required this.todo, required this.specificID})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    Future<http.Response> createAlbum(
+        String fname, String lname, List pnums) async {
+      final SharedPreferences sharedPreferences =
+          await SharedPreferences.getInstance();
+      var authKeyObtained = sharedPreferences.getString('authKey');
+      return http.patch(
+        Uri.parse(
+            'https://kc-api-005.herokuapp.com/api/posts/update/' + specificID),
+        headers: <String, String>{
+          'Content-Type': 'application/json ;charset=UTF-8',
+          'Accept': 'application/json',
+          'auth-token': authKeyObtained.toString(),
+        },
+        body: jsonEncode({
+          'phone_numbers': pnums,
+          'first_name': fname,
+          'last_name': lname,
+        }),
+      );
+    }
+
+    List<int> listNumbers = [];
+    for (int i = 0; i < todo[0].phoneNumbers.length; i++) {
+      listNumbers.add(i + 1);
+    }
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        body: ListView.builder(
+          itemCount: todo.length,
+          itemBuilder: (context, index) {
+            createAlbum(todo[index].firstName, todo[index].lastName,
+                todo[index].phoneNumbers);
+            return Container(
+              child: Column(
+                children: <Widget>[
+                  SizedBox(
+                    height: 40,
+                  ),
+                  Text(
+                    'Updated Successfully. Tap on DONE',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 22,
+                    ),
+                  ),
+                ],
+              ),
+            );
+          },
+        ),
+        floatingActionButton: FloatingActionButton.extended(
+            onPressed: () {
+              Navigator.pushNamedAndRemoveUntil(context, '/home', (_) => false);
+            },
+            label: Text("Done"),
+            foregroundColor: Colors.white,
+            backgroundColor: Colors.black),
+      ),
+    );
+  }
 }

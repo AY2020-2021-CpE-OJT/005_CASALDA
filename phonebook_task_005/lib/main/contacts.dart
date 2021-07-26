@@ -166,7 +166,6 @@ class _HomePageState extends State<HomePage> {
                                       leading: CircleAvatar(
                                         child: Text(
                                             _users[index]['first_name'][0],
-                                            //_users[index]['last_name'][0],
                                             style: TextStyle(
                                                 fontSize: 20,
                                                 color: index % 2 == 0
@@ -184,13 +183,6 @@ class _HomePageState extends State<HomePage> {
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
-
-                                      // subtitle: Text(_phonenum(_users[index]),
-                                      //     style: TextStyle(
-                                      //       color: index % 2 == 0
-                                      //           ? Colors.black
-                                      //           : Colors.black,
-                                      //     )),
                                       onTap: () {
                                         List<int> listNumbers = [];
                                         for (int i = 0;
@@ -204,7 +196,7 @@ class _HomePageState extends State<HomePage> {
                                           context: context,
                                           builder: (BuildContext context) =>
                                               Padding(
-                                            padding: const EdgeInsets.all(12.0),
+                                            padding: const EdgeInsets.all(24.0),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
@@ -240,9 +232,6 @@ class _HomePageState extends State<HomePage> {
                                                               },
                                                               child: const Text(
                                                                 'EDIT',
-                                                                textAlign:
-                                                                    TextAlign
-                                                                        .center,
                                                                 style:
                                                                     TextStyle(
                                                                   color: Colors
@@ -250,13 +239,13 @@ class _HomePageState extends State<HomePage> {
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .bold,
+                                                                  textBaseline:
+                                                                      TextBaseline
+                                                                          .ideographic,
                                                                 ),
                                                               ),
                                                             ),
                                                           ],
-                                                        ),
-                                                        SizedBox(
-                                                          height: 5,
                                                         ),
                                                         Container(
                                                           child: Column(
@@ -270,10 +259,6 @@ class _HomePageState extends State<HomePage> {
                                                               (iter) {
                                                                 return Column(
                                                                   children: [
-                                                                    // SizedBox(
-                                                                    //   height:
-                                                                    //       10,
-                                                                    // ),
                                                                     Text(
                                                                       'Phone #: ' +
                                                                           listNumbers[iter]
@@ -294,28 +279,6 @@ class _HomePageState extends State<HomePage> {
                                                         ),
                                                       ],
                                                     ),
-                                                    contentPadding:
-                                                        EdgeInsets.fromLTRB(
-                                                            0, 15, 0, 30),
-                                                    actions: <Widget>[
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                context, 'OK'),
-                                                        child: const Text(
-                                                          'OK',
-                                                          style: TextStyle(
-                                                            color: Colors
-                                                                .blueAccent,
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                    actionsPadding:
-                                                        EdgeInsets.fromLTRB(
-                                                            24, 0, 0, 0),
                                                   ),
                                                 ),
                                               ],

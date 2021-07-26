@@ -46,9 +46,6 @@ class _MainMenuState extends State<MainMenu> with TickerProviderStateMixin {
               lastPressed == null || now.difference(lastPressed!) > maxDuration;
           if (isWarning) {
             lastPressed = DateTime.now();
-            //  Fluttertoast.showToast(
-            //      msg: "Double Tap to Close App",
-            //      toastLength: Toast.LENGTH_SHORT);
             return false;
           } else {
             Fluttertoast.cancel();

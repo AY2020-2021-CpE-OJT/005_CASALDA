@@ -7,9 +7,8 @@ Flutter Phonebook Application with delete and edit functions.
 ![7](https://user-images.githubusercontent.com/85912319/126317776-59c2f252-eda0-4fbb-a81f-fa1572b5c76d.PNG)
 ![8](https://user-images.githubusercontent.com/85912319/126317784-e108f41f-0054-4d5a-be18-1b261917dff2.PNG)
 ![9](https://user-images.githubusercontent.com/85912319/126319021-e0b53e09-dfb5-4d04-909b-a5c49ae1cd8b.PNG)
-![11](https://user-images.githubusercontent.com/85912319/126319069-927bcd26-abe9-45fe-a5fe-183cb5845a4f.PNG)
+![1](https://user-images.githubusercontent.com/85912319/127077635-c2256515-58a8-43e5-9796-e939af4616f7.PNG)
 ![12](https://user-images.githubusercontent.com/85912319/126319087-bf8e7fe2-95b6-46f0-9bb6-4ffc38db0fde.PNG)
-![13](https://user-images.githubusercontent.com/85912319/126319179-7b424040-8401-4c5f-acd5-8b4e9efe82a2.PNG)
+![2](https://user-images.githubusercontent.com/85912319/127077931-1f770890-3c1b-481b-bc06-bf8de21f8d57.PNG)
 ![14](https://user-images.githubusercontent.com/85912319/126319240-ae53516f-981b-471d-8479-0f022fbd0e58.PNG)
-![15](https://user-images.githubusercontent.com/85912319/126319252-ba25ce8f-8e6b-4c97-8f95-bc45111d88c5.PNG)
-UI needs editing
+![3](https://user-images.githubusercontent.com/85912319/127078086-f893a36d-266d-4ff0-8b2b-64537b25b874.PNG)
